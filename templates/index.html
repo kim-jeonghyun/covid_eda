@@ -238,6 +238,7 @@
                                         var graphs = {{plot.geo_scatter[0] | safe}}
                                             Plotly.plot('scatter0', graphs, {});
                                     </script>
+                                    <p>인구 당 확진자 비율입니다. 유럽, 중동, 북미와 남미 지역에서 코로나 바이러스의 확산세가 심각했음을 알 수 있습니다.</p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="geo_death_rate">
@@ -246,6 +247,7 @@
                                         var graphs = {{plot.geo_scatter[1] | safe}}
                                             Plotly.plot('scatter1', graphs, {});
                                     </script>
+                                    <p>확진자 당 사망자의 비율입니다. 인구당 확진자 비율에서는 눈에 띄지 않았던 아프리카 지역이 눈에 띕니다.</br> 바이러스에 감염된 사람들 중에서 사망자의 비율이 특히 높았다는 것으로 아프리카 지역의 의료 취약성을 원인으로 생각해볼 수 있습니다.</p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="geo_percentage_vaccinated">
@@ -254,6 +256,7 @@
                                         var graphs = {{plot.geo_scatter[2] | safe}}
                                             Plotly.plot('scatter2', graphs, {});
                                     </script>
+                                    <p>인구당 백신접종 횟수의 비율입니다. 인구당 확진자 비율과 상당부분 일치한다는 것을 알 수있습니다. 감염세가 강했던 지역이 백신접종을 서둘렀다는 것을 알 수 있습니다. </br> 한편, 감염자 당 사망자 비율이 높았던 아프리카 지역에서는 백신 접종이 아직 많이 이뤄지지 못한 것을 알 수 있습니다. </p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="geo_fully_vaccintated_rate">
@@ -262,6 +265,7 @@
                                         var graphs = {{plot.geo_scatter[3] | safe}}
                                             Plotly.plot('scatter3', graphs, {});
                                     </script>
+                                    <p>항체 형성을 위해 필요한 접종 횟수를 모두 마친 비율을 나타낸 그래프입니다. 이스라엘, 칠레, 미국이 가장 앞서고 있지만, 30퍼센트 대를 기록하고 있기 때문에 집단 항체 형성을 통한 팬더믹 극복까지는 아직 시간이 걸릴 것으로 보입니다. </p>
                                 </div>
                             </div>
                         </div>
