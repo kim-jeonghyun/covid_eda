@@ -26,7 +26,7 @@ def draw_treemap():
     traces = []
     buttons = []
     for value in cols_dd:
-        traces.append(go.Treemap(labels=DATA["country"], parents=["country"] * len(DATA["country"]), values=DATA[value]))
+        traces.append(go.Treemap(labels=DATA["country"], parents=["country"] * len(DATA["country"]), visible=True if value==cols_dd[0] else False, values=DATA[value]))
         buttons.append(dict(label=value, method='update', args=[{'visible': list(visible == value)}, {'title': f"<b>{value}</b>"}]))
 
     updatemenus = [{'active': 0, 'buttons': buttons}]
@@ -69,7 +69,7 @@ def draw_barchart():
     buttons = []
     for value in cols_dd:
         DATA = DATA.sort_values(value, ascending=False).dropna(subset=[value]).iloc[:20]
-        traces.append(go.Bar(hoverinfo='skip', x=DATA['country'], y=DATA[value],),)
+        traces.append(go.Bar(hoverinfo='skip', visible=True if value==cols_dd[0] else False, x=DATA['country'], y=DATA[value],),)
         buttons.append(dict(label=value, method='update', args=[{'visible': list(visible==value)}, {'title': f"<b>{value} 상위 20개국 현황</b>"}]))
 
     updatemenus = [{'active': 0, 'buttons': buttons}]
@@ -131,3 +131,23 @@ def case_vacc():
 
     case_vaccJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return case_vaccJSON
+
+
+def draw_geo_scatter():
+    # Create a Continent column:
+    data = pd.read_csv(os.path.join(THIS_FOLDER, 'static/data/summary.csv'))
+    data['confirmed_rate'] = data['total_confirmed']*100/data['population']
+    data['death_rate'] = data['total_deaths']*100/data['total_confirmed']
+    data['fully_vaccintated_rate'] = data['people_fully_vaccinated']*100/data['population']
+    data = data.dropna()
+    cols = ['confirmed_rate', 'death_rate', 'percentage_vaccinated', 'fully_vaccintated_rate']
+    scatters = []
+    for value in cols:
+        fig = px.scatter_geo(data, locations="country", color="continent",
+                             locationmode='country names',
+                             hover_name="country", size=value,
+                             projection="natural earth")
+        txt = value
+        fig.update_layout(title=txt, title_x=0.45)
+        scatters.append(json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder))
+    return scatters
