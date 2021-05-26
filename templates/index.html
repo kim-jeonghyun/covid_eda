@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Covid 19 EDA Project</title>
+        <link rel="icon" type="image/x-icon" href="static/assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="static/js/fontawesome-all.min.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+              type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css"/>
+        <script src="static/js/jquery.min.js"></script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet"/>
+        <!-- Bootstrap core JS-->
+        <script src="static/js/jquery-3.5.1.min.js"></script>
+        <script src="static/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="static/js/anime.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="static/js/scripts.js"></script>
+        <script src="static/js/plotly-latest.min.js"></script>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Covid 19 Spread and Vaccination Status</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="static/assets/img/covid_globe.jpg" alt="..." /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger float-end" href="#introduction">introduction</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger float-end" href="#about_data">about the data</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger float-end" href="#pandemic_status">overall pandemic status</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger float-end" href="#over_time">pandemic over time</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger float-end" href="#vaccination">vaccination status</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger float-end" href="#vaccine_work">deos vacctination work</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="introduction">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Covid 19 Spread and Vaccination Status
+                        
+                    </h1>
+                    <div class="subheading mb-5">
+                        KDT x programmers AI dev Course Monthly Project · 
+                        <a href="mailto:kimjeonghyun.jkim@gmail.com">kimjeonghyun.jkim@gmail.com</a>
+                    </div>
+                    <h3>Introduction</h3>
+                    <p class="lead mb-5"> 
+
+                        Corona-19는 2019년 12월 인간 감염이 처음 보고된 전염병입니다. 2020년 1월 중국 우한 지역을 시작으로 본격적으로 전세계에 확산되어 세상을 멈추게 한 지 1년이 훌쩍 넘었습니다.</br>
+                        전 인류적 노력에도 불구하고 2021년 5월 22일 현재 아직도 하루 50만명 이상이 새로 확진되고, 1만명 이상이 코로나 19로 사망하고 있습니다. </br> </br>
+                        한편, 발빠르게 백신을 확보한 일부 선진국들을 중심으로 바이러스의 확산을 막기 위한 vaccine 접종 또한 활발하게 진행되고 있습니다. </br></br>
+                        
+                        본 프로젝트에서는 세계 백신 접종 현황에 대한 데이터를 보다 한 눈에 보기 좋게 시각화해서 살펴보고, 빠른 백신 접종이 코로나 확산세 진정과 관련 있는지 살펴보려고 합니다. </p>
+                    <div class="social-icons">
+                        <a class="social-icon" href="https://rollingsnowball.tistory.com/"><i class="fab fa-blogger"></i></a>
+                        <a class="social-icon" href="https://github.com/kim-jeonghyun/covid_eda"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://www.kaggle.com/jeonghyunjhkim/covid-vaccination-progress/"><i class="fab fa-kaggle"></i></a>
+
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- about data-->
+            <section class="resume-section" id="about_data">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">about the data</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">source</h3>
+                        </br>
+                            <ul>
+                                <li><a href = "https://www.kaggle.com/josephassaker/covid19-global-dataset/" target="_blank">코로나 19 확산 현황</a> </li>
+                                <li><a href = "https://www.kaggle.com/gpreda/covid-world-vaccination-progress" target="_blank">코로나 19 백신 접종 현황</a></li>
+                            </ul> 
+                                
+                            <p>2020년 1월 20일부터 2021년 5월 23일까지 수집된 코로나 19 바이러스 확산 및 백신 접종 현황 관련 국가별 데이터입니다.</br> 1번 데이터는 <a href = "https://www.worldometers.info/coronavirus/" target="_blank"><b>worldometers</b></a>, 2번 데이터는 <a href = "https://ourworldindata.org" target="_blank"><b>Our World in Data</b></a>에서 수집된 정보입니다.</br>
+                                위의 데이터셋을 바탕으로 결측치 처리, DataFrame 합치기 등의 전처리를 거친 데이터셋을 만들어 분석하였습니다.
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">variables</h3>
+                        </br>
+                            <p> 본 프로젝트에서 사용한 주요 변수는 다음과 같습니다. </p>
+                        
+                            <ul>
+                                <li>total_confirmed : 코로나 19 누적 확진자 수</li>
+                                <li>total_deaths : 사인이 코로나 19인 누적 사망자 수</li>
+                                <li>daily_new_cases : 코로나 19 일일 신규 확진자 수</li>
+                                <li>daily_new_deaths : 사인이 코로나 19인  일일 신규 사망자 수</li>
+                                <li>total_number_of_vaccinations : 코로나 19 백신 누적 접종 횟수</li>
+                                <li>fully_vaccinated : 각 백신이 요구하는 접종 횟수를 모두 마친 사람의 수</li>
+                            </ul> 
+                                
+                        </div>
+                
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- pandemic status-->
+            <section class="resume-section" id="pandemic_status">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">overall pandemic status</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <div class="chart-area", id="treemap", style="height: max-content;">
+                                <script type="text/javascript">
+                                    var graphs = {{plot.treemap | safe}}
+                                    Plotly.plot('treemap', graphs, {});
+                                </script>
+                            </div>
+                            <ol>
+                                <li>총 확진자 수를 보면, 미국, 인도, 브라질, 총 사망자 수를 보면, 미국, 브라질, 인도 순이었습니다. 절대적인 수로는 이 세 국가가 가장 많은 인구가 코로나 19 바이러스에 감염되었고, 많은 피해를 입은 것으로 보입니다.
+                                    이 세 국가는 전 세계적으로 가장 인구 수가 많은 국가들이기도 합니다.</li>
+                                <li>인구수도 제일 많고, covid-19 바이러스가 처음 발견되어 확산되기 시작한 중국이 2021년 현재 확진자/ 사망자 top 20 안에 하나도 들지 않는다는 점이 인상적입니다.</li>
+                                <li>인구 1백만명 당 확진자 수와 사망자 수를 볼 경우, 유럽 대륙의 소국가들이 상위권에 대거 포함되어 있음을 알 수 있습니다. 유럽 대륙의 코로나 19 피해가 특별히 더 심각했음을 알 수 있습니다.</li>
+                                <li>확진자 중 사망자의 비율을 보면, 아프리카와 남미 지역이 많습니다. 의료 인프라 부족으로 인한 현상이 아닐까 추측됩니다.</li>
+                            </ol>
+                         </div>
+                   
+                    </div>
+                    
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- over_time-->
+            <section class="resume-section" id="over_time">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Pandemic over Time</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <div class="chart-area", id="geo_map", style="height: max-content;">
+                                <script type="text/javascript">      
+                                    var graphs = {{plot.geo_map | safe}}                                      
+                                    Plotly.plot('geo_map',graphs,{});                                                  
+                                </script>                    
+                            </div>
+                            <p>초반에는 중국 내에서 급속도로 확산되었다가, 스페인, 이탈리아를 중심으로 한 유럽 → 미국 → 브라질 → 인도 등으로 위기 지역이 시간의 흐름에 따라 변하는 것을 관찰할 수 있습니다.</p>
+                        </div>
+                   
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- vaccination-->
+            <section class="resume-section" id="vaccination">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">vaccination status</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <div class="chart-area", id="barchart", style="height: max-content;">
+                                <script type="text/javascript">      
+                                    var graphs = {{plot.barchart | safe}}                                      
+                                    Plotly.plot('barchart',graphs,{});                                                  
+                                </script>                    
+                            </div>
+                            <ol>
+                                <li>백신 접종이 가장 많이 이루어진 국가는 확진자가 가장 많은 국가와 어느 정도 일치하는 것을 알 수 있습니다. 중국, 미국, 인도, 영국, 브라질 순입니다.</li>
+                                <li>확진자 최상위권에 들지 않았고, 인구수도 많은 편이 아닌 영국이 상위권에 있는 것이 눈에 띕니다. 일찌감치 백신 개발에 성공한 의료기술 선진국 답습니다.</li>
+                                <li>총 접종 횟수를 인구로 나눈 수치를 보면 아랍에미리츠와 이스라엘, 칠레 등의 국가가 눈에 띕니다. 이 국가들은 백신 원천 기술을 보유한 국가도 아니고, 바이러스의 확산세가 가장 심각했던 국가도 아니었습니다. 국가 정책적 의지에 따른 결과로 보입니다.</li>
+
+                            </ol>
+
+                        </div>
+                    </div>    
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- vaccine_work-->
+            <section class="resume-section" id="vaccine_work">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Does Vaccination Work?</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <div class="chart-area", id="case_vacc", style="height: max-content;">
+                                <script type="text/javascript">      
+                                    var graphs = {{plot.case_vacc | safe}}                                      
+                                    Plotly.plot('case_vacc',graphs,{});                                                  
+                                </script>                    
+                            </div>
+                            <ol>
+                                <li>백신 접종의 효과는 단순히 백신 접종횟수가 높은 것으로 결정되는 것이 아니라, 항체가 형성될 만큼 정해진 접종횟수를 마친 사람들의 비중이 다수가 되어야 볼 수 있습니다. </li>
+                                <li>따라서 백신 접종으로 인한 코로나 바이러스 확산세 감소는 아직까지 이야기 하기 섣부른 면이 있습니다.</li>
+                                <li>그러나 코로나 확진자 수가 가장 많으면서, 백신 접종도 가장 많이 이뤄지고 있는 미국의 사례를 살펴보면, 백신 접종의 확대와 신규 확진자수의 감소가 보입니다.</li>
+                                
+                            </ol>
+
+                        </div>
+                    </div>    
+      
+                </div>
+            </section>
+        </div>
+    </body>
+</html>
