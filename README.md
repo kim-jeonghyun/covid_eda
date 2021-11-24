@@ -1,5 +1,6 @@
 
 # COVID 19 SPREAD AND VACCINATION STATUS EDA
+<img src = "https://github.com/kim-jeonghyun/covid_eda/blob/main/img/confirmed_over_time.png"/>
 
 - url : http://kimjeonghyun.ap-northeast-2.elasticbeanstalk.com/
 - datasets : https://www.kaggle.com/josephassaker/covid19-global-dataset/  
